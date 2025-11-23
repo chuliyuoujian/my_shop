@@ -1,3 +1,4 @@
+//分类页面
 import 'package:flutter/material.dart';
 
 class CategoryView extends StatefulWidget {
