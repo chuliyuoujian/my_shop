@@ -11,7 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("登录页")),
+      appBar: AppBar(title: Text("登录页"), centerTitle: true),
       body: Container(child: Text("登录页")),
     );
   }
