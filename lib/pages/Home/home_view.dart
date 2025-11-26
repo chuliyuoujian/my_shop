@@ -5,6 +5,7 @@ import 'package:my_shop/components/Home/home_hot.dart';
 import 'package:my_shop/components/Home/home_morelist.dart';
 import 'package:my_shop/components/Home/home_slider.dart';
 import 'package:my_shop/components/Home/home_suggestion.dart';
+import 'package:my_shop/viewmodels/home_slider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,10 +15,25 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  List<BannerItem> _getBannerItem() {
+    return [
+      BannerItem(
+        id: "1",
+        imageUrl:
+            "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/1.jpg",
+      ),
+      BannerItem(
+        id: "2",
+        imageUrl:
+            "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/3.jpg",
+      ),
+    ];
+  }
+
   List<Widget> getSlivers() {
     return [
       //轮播图
-      SliverToBoxAdapter(child: HomeSlider()),
+      SliverToBoxAdapter(child: HomeSlider(bannerItems: _getBannerItem())),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
       //放置分类组件
       SliverToBoxAdapter(child: HomeCategory()),
