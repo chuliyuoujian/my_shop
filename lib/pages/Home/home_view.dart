@@ -1,5 +1,6 @@
 //主页
 import 'package:flutter/material.dart';
+import 'package:my_shop/api/home.dart';
 import 'package:my_shop/components/Home/home_category.dart';
 import 'package:my_shop/components/Home/home_hot.dart';
 import 'package:my_shop/components/Home/home_morelist.dart';
@@ -15,25 +16,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  List<BannerItem> _getBannerItem() {
-    return [
-      BannerItem(
-        id: "1",
-        imageUrl:
-            "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/1.jpg",
-      ),
-      BannerItem(
-        id: "2",
-        imageUrl:
-            "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/3.jpg",
-      ),
-    ];
-  }
+  List<BannerItem> _bannerItems = [];
 
   List<Widget> getSlivers() {
     return [
       //轮播图
-      SliverToBoxAdapter(child: HomeSlider(bannerItems: _getBannerItem())),
+      SliverToBoxAdapter(child: HomeSlider(bannerItems: _bannerItems)),
       SliverToBoxAdapter(child: SizedBox(height: 10)),
       //放置分类组件
       SliverToBoxAdapter(child: HomeCategory()),
@@ -59,6 +47,18 @@ class _HomeViewState extends State<HomeView> {
       //放置更多商品组件
       HomeMoreList(),
     ];
+  }
+
+  @override
+  initState() {
+    super.initState();
+    _getBannerList();
+    print('teyodebug: getBannerList success');
+  }
+
+  void _getBannerList() async {
+    _bannerItems = await getBannerListAPI();
+    setState(() {});
   }
 
   @override

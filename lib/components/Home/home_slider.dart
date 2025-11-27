@@ -15,6 +15,7 @@ class _HomeSliderState extends State<HomeSlider> {
   int _currentIndex = 0;
   Widget _getSlider() {
     final double screenWidth = MediaQuery.of(context).size.width;
+    print('teyodebug : bannerItems.length = ${widget.bannerItems.length}');
     return CarouselSlider(
       carouselController: _carouselController,
       items: List.generate(
